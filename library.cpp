@@ -2,6 +2,7 @@
 #include <filesystem>
 #include <sys/stat.h>
 #include <fstream>
+#include <unistd.h>
 
 #include <string>
 
@@ -49,7 +50,7 @@ namespace library {
 
     void ConfigDir::create(string& path, char name) {
         if (exists(path)){
-            mkdir(path.c_str() + name);
+            mkdir(path.c_str() + name, S_IRWXU);
         } else {
             printf("path does not exist \n");
         }
