@@ -7,7 +7,7 @@ Jabacat's Easy Config, C++ edition
 Works in progress
 
 ## API
-```
+```rs
 ConfigFile
   - from_home
   - exists
