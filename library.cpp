@@ -1,22 +1,25 @@
 #include "library.hpp"
-#include <filesystem>
 #include <sys/stat.h>
 #include <fstream>
 #include <unistd.h>
+#include <filesystem>
+
 
 #include <string>
 
 using namespace std;
 
+namespace fs = std::experimental::filesystem;
+
 namespace library {
 
-    bool Config::exists (string& path) {
+    bool Config::exists (fs::path& path) {
         struct stat buffer{};
         return (stat (path.c_str(), &buffer) == 0);
     }
 
 
-    void ConfigFile::remove(string& path) {
+    void ConfigFile::remove(fs::path& path) {
         if (exists(path)){
             const char *file = path.c_str();
             std::remove(file);
@@ -26,21 +29,21 @@ namespace library {
 
     }
 
-    void ConfigFile::create(string& path, const char name) {
+    void ConfigFile::create(fs::path& path, string& name) {
         ofstream file;
         if (exists(path)){
-            file.open(path + name);
+            file.open(path.c_str() + name);
         } else {
             printf("path does not exist \n");
         }
     }
 
 
-    void ConfigFile::from_home() {
+    void ConfigFile::from_home(fs::path& path) {
 
     }
 
-    void ConfigDir::remove(string& path) {
+    void ConfigDir::remove(fs::path& path) {
         if (exists(path)){
             rmdir(path.c_str());
         } else {
@@ -48,12 +51,16 @@ namespace library {
         }
     }
 
-    void ConfigDir::create(string& path, char name) {
+    void ConfigDir::create(fs::path& path, char name) {
         if (exists(path)){
             mkdir(path.c_str() + name, S_IRWXU);
         } else {
             printf("path does not exist \n");
         }
     }
-    
+
+    void ConfigDir::from_home(fs::path& path) {
+
+    }
+
 } // namespace library

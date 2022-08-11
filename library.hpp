@@ -2,6 +2,9 @@
 #define JEC_CPP_LIBRARY_HPP
 
 #include <string>
+#include <experimental/filesystem>
+
+namespace fs = std::experimental::filesystem;
 
 namespace library {
 
@@ -9,25 +12,25 @@ namespace library {
     protected:
 
     public:
-        static bool exists (std::string& path);
+        static bool exists (fs::path& path);
 
     };
 
     class ConfigFile : public Config{
     public:
-        void remove(std::string& path);
+        void remove(fs::path& path);
 
-        void create(std::string& path, const char name);
+        void create(fs::path& path, std::string& name);
 
-        static void from_home();
+        static void from_home(fs::path& path);
     };
 
     class ConfigDir : public Config {
-        void remove(std::string& path);
+        void remove(fs::path& path);
 
-        void create(std::string& path, char name);
+        void create(fs::path& path, char name);
 
-        static void from_home();
+        static void from_home(fs::path& path);
     };
 }
 
