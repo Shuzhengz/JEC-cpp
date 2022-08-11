@@ -3,6 +3,9 @@
 
 #include <string>
 #include <experimental/filesystem>
+#include <sys/stat.h>
+#include <fstream>
+#include <unistd.h>
 
 namespace fs = std::experimental::filesystem;
 
