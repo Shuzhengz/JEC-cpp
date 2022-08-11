@@ -1,7 +1,6 @@
 #ifndef JEC_CPP_LIBRARY_HPP
 #define JEC_CPP_LIBRARY_HPP
 
-#include <string>
 #include <experimental/filesystem>
 #include <sys/stat.h>
 #include <fstream>
@@ -13,6 +12,7 @@ namespace library {
 
     class Config {
     protected:
+        static fs::path rm_filename(fs::path& path);
 
     public:
         static bool exists (fs::path& path);
@@ -21,19 +21,19 @@ namespace library {
 
     class ConfigFile : public Config{
     public:
-        void remove(fs::path& path);
+        static void remove(fs::path& path);
 
-        void create(fs::path& path, std::string& name);
+        static void create(fs::path& path, std::string& name);
 
-        static void from_home(fs::path& path);
+        static std::string from_home(fs::path& path);
     };
 
     class ConfigDir : public Config {
-        void remove(fs::path& path);
+        static void remove(fs::path& path);
 
-        void create(fs::path& path, char name);
+        static void create(fs::path& path, char name);
 
-        static void from_home(fs::path& path);
+        static std::string from_home(fs::path& path);
     };
 }
 

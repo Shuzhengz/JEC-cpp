@@ -6,6 +6,14 @@ namespace fs = std::experimental::filesystem;
 
 namespace library {
 
+    fs::path Config::rm_filename(fs::path& path) {
+        if (path.has_filename()) {
+            return path.remove_filename();
+        } else {
+            return path;
+        }
+    }
+
     bool Config::exists (fs::path& path) {
         struct stat buffer{};
         return (stat (path.c_str(), &buffer) == 0);
@@ -32,28 +40,38 @@ namespace library {
     }
 
 
-    void ConfigFile::from_home(fs::path& path) {
-
+    string ConfigFile::from_home(fs::path& path) {
+        if (exists(path)){
+            return fs::absolute(path);
+        } else {
+            printf("path does not exist \n");
+        }
     }
 
     void ConfigDir::remove(fs::path& path) {
-        if (exists(path)){
-            rmdir(path.c_str());
+        fs::path p = rm_filename(path);
+        if (exists(p)){
+            rmdir(p.c_str());
         } else {
             printf("path does not exist \n");
         }
     }
 
     void ConfigDir::create(fs::path& path, char name) {
-        if (exists(path)){
-            mkdir(path.c_str() + name, S_IRWXU);
+        fs::path p = rm_filename(path);
+        if (exists(p)){
+            mkdir(p.c_str() + name, S_IRWXU);
         } else {
             printf("path does not exist \n");
         }
     }
 
-    void ConfigDir::from_home(fs::path& path) {
-
+    string ConfigDir::from_home(fs::path& path) {
+        if (exists(path)){
+            return fs::absolute(path);
+        } else {
+            printf("path does not exist \n");
+        }
     }
 
 } // namespace library
