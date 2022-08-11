@@ -25,7 +25,7 @@ namespace library {
             const char *file = path.c_str();
             std::remove(file);
         } else {
-            printf("path does not exist \n");
+            throw std::invalid_argument("path does not exist \n");
         }
 
     }
@@ -35,7 +35,7 @@ namespace library {
         if (exists(path)){
             file.open(path.c_str() + name);
         } else {
-            printf("path does not exist \n");
+            throw std::invalid_argument("path does not exist \n");
         }
     }
 
@@ -44,7 +44,7 @@ namespace library {
         if (exists(path)){
             return fs::absolute(path);
         } else {
-            printf("path does not exist \n");
+            throw std::invalid_argument("path does not exist \n");
         }
     }
 
@@ -53,7 +53,7 @@ namespace library {
         if (exists(p)){
             rmdir(p.c_str());
         } else {
-            printf("path does not exist \n");
+            throw std::invalid_argument("path does not exist \n");
         }
     }
 
@@ -62,7 +62,7 @@ namespace library {
         if (exists(p)){
             mkdir(p.c_str() + name, S_IRWXU);
         } else {
-            printf("path does not exist \n");
+            throw std::invalid_argument("path does not exist \n");
         }
     }
 
@@ -70,7 +70,7 @@ namespace library {
         if (exists(path)){
             return fs::absolute(path);
         } else {
-            printf("path does not exist \n");
+            throw std::invalid_argument("path does not exist \n");
         }
     }
 
