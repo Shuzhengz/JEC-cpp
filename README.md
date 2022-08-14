@@ -20,3 +20,19 @@ ConfigDir
   - remove
   - create
 ```
+
+## Usage
+``` cpp
+// Files and Directories
+static bool exists(fs::path& path);                     // Checks if file or directory exists
+
+// Files
+static void remove(fs::path& path);                     // Removes file
+static void create(fs::path& path, std::string& name);  // Creates file
+static std::string from_home(fs::path& path);           // Gets path from home
+
+// Directories
+static void remove(fs::path& path);                     // Removes Directory
+static void create(fs::path& path, char name);          // Creates directory
+static std::string from_home(fs::path& path);           // Gets directory path from home (auto delete filename)
+```
