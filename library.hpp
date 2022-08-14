@@ -15,7 +15,7 @@ namespace library {
         static fs::path rm_filename(fs::path& path);
 
     public:
-        static bool exists (fs::path& path);
+        static bool exists(fs::path& path);
 
     };
 
