@@ -1,4 +1,4 @@
-# JEC-cpp ![C++](https://github.com/Shuzhengz/JEC-cpp/actions/workflows/C++.yml/badge.svg)
+# JEC-CPP ![C++](https://github.com/Shuzhengz/JEC-cpp/actions/workflows/C++.yml/badge.svg)
 
 Jabacat's Easy Config, C++ edition
 
