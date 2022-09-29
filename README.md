@@ -8,7 +8,8 @@ Works in progress
 
 TODO:
 
-[ ] Make Tests
+- [x] Complete Functions
+- [ ] Make Tests
 
 ## API
 ```rs
