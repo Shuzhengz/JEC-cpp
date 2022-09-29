@@ -6,6 +6,10 @@ Jabacat's Easy Config, C++ edition
 
 Works in progress
 
+TODO:
+
+[ ] Make Tests
+
 ## API
 ```rs
 ConfigFile
