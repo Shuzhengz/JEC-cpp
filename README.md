@@ -10,6 +10,7 @@ TODO:
 
 - [x] Complete Functions
 - [ ] Make Tests
+- [ ] Make Documentation
 
 ## API
 ```rs
